@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delicious Spots Bakery</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#fff8f0;
+}
+
+.page{
+display:none;
+padding:20px;
+}
+
+.active{
+display:block;
+}
+
+header{
+background:#ff69b4;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+.contact{
+font-size:18px;
+margin-top:10px;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+margin-top:30px;
+}
+
+.card{
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 3px 10px rgba(0,0,0,0.2);
+}
+
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+}
+
+.card-content{
+padding:15px;
+}
+
+.price{
+color:#e91e63;
+font-weight:bold;
+margin-top:10px;
+}
+
+.btn{
+background:#ff4081;
+color:white;
+padding:12px 20px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+margin-top:15px;
+font-size:16px;
+}
+
+.btn:hover{
+background:#e91e63;
+}
+
+.form-box{
+max-width:500px;
+margin:auto;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+input,select{
+width:100%;
+padding:10px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+.thank-card{
+max-width:600px;
+margin:auto;
+background:white;
+padding:30px;
+text-align:center;
+border-radius:15px;
+box-shadow:0 0 15px rgba(0,0,0,0.2);
+}
+
+.qr{
+margin-top:20px;
+}
+
+.qr img{
+width:220px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+
+<div id="page1" class="page active">
+
+<header>
+<h1>🎂 Delicious Spots</h1>
+<p>Fresh Cakes & Bakery Items</p>
+<p class="contact">📞 Contact: 9849748688</p>
+</header>
+
+<div class="products">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587" alt="">
+<div class="card-content">
+<h3>Vanilla Cake</h3>
+<p>Available Sizes</p>
+<p class="price">Rs.350 | Rs.500 | Rs.1000+</p>
+<button class="btn" onclick="goOrder('Vanilla Cake')">🛒 Order Now</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c" alt="">
+<div class="card-content">
+<h3>Chocolate Cake</h3>
+<p class="price">Rs.450 | Rs.600 | Rs.1200+</p>
+<button class="btn" onclick="goOrder('Chocolate Cake')">🛒 Order Now</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1551024601-bec78aea704b" alt="">
+<div class="card-content">
+<h3>Donut</h3>
+<p class="price">Rs.35</p>
+<button class="btn" onclick="goOrder('Donut')">🛒 Order Now</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1509440159596-0249088772ff" alt="">
+<div class="card-content">
+<h3>Pastry</h3>
+<p class="price">Rs.60</p>
+<button class="btn" onclick="goOrder('Pastry')">🛒 Order Now</button>
+</div>
+</div>
+
+</div>
+
+</div>
+
+<!-- PAGE 2 -->
+
+<div id="page2" class="page">
+
+<div class="form-box">
+
+<h2>📝 Order Form</h2>
+
+<input type="text" id="name" placeholder="Customer Name">
+
+<input type="text" id="phone" placeholder="Phone Number">
+
+<select id="product">
+<option>Vanilla Cake</option>
+<option>Chocolate Cake</option>
+<option>Donut</option>
+<option>Pastry</option>
+</select>
+
+<input type="number" id="qty" placeholder="Quantity">
+
+<button class="btn" onclick="confirmOrder()">
+✅ Confirm Order
+</button>
+
+</div>
+
+</div>
+
+<!-- PAGE 3 -->
+
+<div id="page3" class="page">
+
+<div class="thank-card">
+
+<h1>🎉 Thank You!</h1>
+
+<p>Your order has been received successfully.</p>
+
+<p>We will contact you soon.</p>
+
+<h3>Delicious Spots Bakery</h3>
+
+<p>📞 9849748688</p>
+
+<div class="qr">
+
+<h3>WhatsApp QR Code</h3>
+
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://wa.me/9779849748688" alt="QR">
+
+</div>
+
+<br>
+
+<a id="whatsappBtn" href="#" target="_blank">
+<button class="btn">💬 Send WhatsApp Message</button>
+</a>
+
+</div>
+
+</div>
+
+<script>
+
+function goOrder(product){
+
+document.getElementById('page1').classList.remove('active');
+document.getElementById('page2').classList.add('active');
+
+document.getElementById('product').value = product;
+}
+
+function confirmOrder(){
+
+let name=document.getElementById('name').value;
+let product=document.getElementById('product').value;
+let qty=document.getElementById('qty').value;
+
+let msg=
+"Hello Delicious Spots!%0A"+
+"Customer: "+name+"%0A"+
+"Product: "+product+"%0A"+
+"Quantity: "+qty;
+
+document.getElementById('whatsappBtn').href=
+"https://wa.me/9779849748688?text="+msg;
+
+document.getElementById('page2').classList.remove('active');
+document.getElementById('page3').classList.add('active');
+}
+
+</script>
+
+</body>
+</html>
